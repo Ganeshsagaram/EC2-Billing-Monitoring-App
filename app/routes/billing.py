@@ -1,5 +1,7 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException,Depends
+from app.routes.auth import get_current_user
 from app.services.aws_service import AWSService
+from app.routes.auth import get_current_user
 
 router = APIRouter()
 
@@ -7,7 +9,7 @@ aws_service = AWSService()
 
 
 @router.get("/ec2_billing/monthly")
-def get_monthly_billing(region:str="eu-north-1"):
+def get_monthly_billing(user: str = Depends(get_current_user), region: str = "eu-north-1"):
     try:
         billing_data = aws_service.get_monthly_cost(region)
         return billing_data

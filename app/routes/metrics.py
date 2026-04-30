@@ -1,5 +1,6 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException,Depends
 from app.services.aws_service import AWSService
+from app.routes.auth import get_current_user    
 router = APIRouter()
 
 aws_service = AWSService()
@@ -7,7 +8,7 @@ aws_service = AWSService()
 #“Metrics are fetched using instance ID and region; if they don’t match, CloudWatch returns empty data, so validation can be added as an enhancement.”
 
 @router.get("/metrics/cpu/{instance_id}")
-def get_cpu_metrics(instance_id: str, region: str = "eu-north-1"):
+def get_cpu_metrics(instance_id: str, region: str = "eu-north-1",user: str = Depends(get_current_user)):
     try:
         data = aws_service.get_cpu_utilization(instance_id, region)
         if len(data) == 0:

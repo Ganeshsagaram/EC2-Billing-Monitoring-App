@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from datetime import datetime, timedelta
 import jwt
-from app.config import settings
+from app.config import settings, fake_user
 router = APIRouter()
 
 # 🔐 Config (keep simple for now)
@@ -13,11 +13,6 @@ ACCESS_TOKEN_EXPIRE_MINUTES = settings.ACCESS_TOKEN_EXPIRE_MINUTES
 security = HTTPBearer()
 
 # 🧑‍💻 Dummy user (for demo)
-fake_user = {
-    "username": "admin",
-    "password": "admin123"
-}
-
 
 # 🔑 Create JWT Token
 def create_access_token(data: dict):

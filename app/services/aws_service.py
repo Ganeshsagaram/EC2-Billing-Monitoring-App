@@ -112,7 +112,7 @@ class AWSService:
             cloudwatch_client = self.session.client("cloudwatch", region_name=region)
 
             end_time = datetime.utcnow()
-            start_time = end_time - timedelta(days=7) #for seven days
+            start_time = end_time - timedelta(days=30) #for seven days
 
             response = cloudwatch_client.get_metric_statistics(
                 Namespace="AWS/EC2",
