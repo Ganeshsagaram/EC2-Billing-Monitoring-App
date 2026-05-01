@@ -1,3 +1,4 @@
+
 # EC2 Billing Monitoring App
 
 An integrated application for monitoring AWS EC2 instances and billing data with a modern web dashboard and RESTful API backend.
@@ -430,5 +431,7 @@ For issues, questions, or suggestions:
 - **v1.0** (Current) - Initial release with EC2 monitoring, billing tracking, and dashboard
 
 ---
+## App Screenshot
+<img width="1642" height="923" alt="EC2-Dashboard-Screenshot" src="https://github.com/user-attachments/assets/8121e982-b7f9-4bf6-8670-bd9ad2cd251f" />
 
 **Happy Monitoring! 🚀**
