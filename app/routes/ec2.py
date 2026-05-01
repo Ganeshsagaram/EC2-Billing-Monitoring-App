@@ -7,7 +7,7 @@ router = APIRouter()
 aws_service = AWSService()  # Initialize the AWS service ( profile)
 
 @router.get("/ec2/instances")
-def get_ec2_instances(region:str="eu-north-1",user: str = Depends(get_current_user)):
+def get_ec2_instances(region:str="eu-north-1", user: str = Depends(get_current_user)):
     try:
         instances = aws_service.get_ec2_instances(region)
         return {

@@ -9,7 +9,7 @@ aws_service = AWSService()
 
 
 @router.get("/ec2_billing/monthly")
-def get_monthly_billing(user: str = Depends(get_current_user), region: str = "eu-north-1"):
+def get_monthly_billing( region: str = "eu-north-1",user: str = Depends(get_current_user)):
     try:
         billing_data = aws_service.get_monthly_cost(region)
         return billing_data
